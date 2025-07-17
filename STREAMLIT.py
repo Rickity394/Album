@@ -1,48 +1,141 @@
 import streamlit as st
-with st.sidebar:
-    image = "data:image/webp;base64,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"
-    st.image(image, caption="JVKE")
-    st.write("Name: Jake")
-    st.write("Display name: JVKE")
-    st.write('''JVKE, known for a famous pop singer, a rapper in America. Known best for the GRAMMY''')
-col1, col2, col3, col4, col5 = st.columns(5)
-with col1:
-    b1 = st.button("JVKE's song")
-with col2:
-    b2 = st.button("SZA's song")
-with col3:
-    b3 = st.button("Chill Ah musics")
-with col4:
-    b4 = st.button("Sleep")
-with col5:
-    b5 = st.button("d4vd")
-if b1:
-    with st.expander("JVKE"):
-        st.title("MV Favorites")
-        st.write("this is what love feels like")
-        video = "https://www.youtube.com/watch?v=BOyO8sZOaOQ"
-        st.video(video, format='video/mp4')
-if b2:
-    with st.expander("SZA"):
-        st.title("MV Favorites")
-        st.write("BMF")
-        video1 = "https://www.youtube.com/watch?v=hWjwNgiLMgA"
-        st.video(video1, format='video/mp4')
-if b3:
-    with st.expander("Chill Ah Music"):
-        st.title("MV Favorites")
-        st.write("new fashion")
-        video2 = "https://www.youtube.com/watch?v=MYPVQccHhAQ"
-        st.video(video2, format="video/m4p")
-if b4:
-    with st.expander("Sleep"):
-        st.title("MV Favorites")
-        st.write("cozy")
-        video3 = "https://www.youtube.com/watch?v=MYPVQccHhAQ"
-        st.video(video3, format="video/mp4")
-if b5:
-    with st.expander("d4vd"):
-        st.title("MV favorites")
-        st.write("Feelt it")
-        video4 = "https://www.youtube.com/watch?v=vZi8ET9k11g"
-        st.video(video4, format="video/mp4")
+from sklearn.linear_model import LinearRegression
+import feedparser
+st.sidebar.title("Danh sách nghệ sĩ ")
+selected_artist = st.sidebar.radio("chọn nghệ sĩ: ", ["Đen Vâu", "Hà Anh Tuấn", "Sơn Tùng M-TP"])
+
+videos = {
+    "Đen Vâu": [
+        ("Bữa ăn cho em", "https://www.youtube.com/watch?v=ukHK1GVyr0I"),
+        ("Mang tiền về cho mẹ", "https://www.youtube.com/watch?v=UVbv-PJXm14"),
+        ("Trời hôm nay nhiều mây cực!", "https://www.youtube.com/watch?v=MBaF0l-PcRY"),
+        ("Hai triệu năm", "https://www.youtube.com/watch?v=LSMDNL4n0kM")
+    ],
+    "Hà Anh Tuấn" : [
+        ("Tuyết rơi mùa hè", "https://www.youtube.com/watch?v=pTh3KCD7Euc"),
+        ("Nước ngoài", "https://www.youtube.com/watch?v=pU3O9Lnp-Z0"),
+        ("Tháng tư là lời nói dối của em", "https://www.youtube.com/watch?v=UCXao7aTDQM"),
+        ("Xuân thì", "https://www.youtube.com/watch?v=3s1r_g_jXNs")        
+    ],
+    "Sơn Tùng M-TP": [
+        ("Lạc trôi", "https://www.youtube.com/watch?v=Llw9Q6akRo4"),
+        ("Chúng ta không thuộc về nhau", "https://www.youtube.com/watch?v=qGRU3sRbaYw"),
+        ("Muộn rồi mà sao còn", "https://www.youtube.com/watch?v=xypzmu5mMPY"),
+        ("Hãy trao cho anh", "https://www.youtube.com/watch?v=knW7-x7Y7RE")
+    ]
+}
+st.title(" ứng dụng giải trí và sức khỏe ")
+
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["MV yêu thích", "Dự đoán giờ đi ngủ", "Đọc báo", "Gia Vang","BMI calculations", "Walking Steps", "Height"])
+with tab1:
+    st.header(f"Các bài hát của {selected_artist} ")
+    for title, url in videos[selected_artist]:
+        st.subheader(title)
+        st.video(url)
+with tab2:
+    st.header(f"songs: {selected_artist}")
+    x = [
+        [10, 1, 8],
+        [20, 5, 6],
+        [25, 8, 3],
+        [30, 6, 5],
+        [35, 2, 9],
+        [40, 4, 3]
+    ]
+    y = [10, 8, 6, 7, 9.5, 9], [12, 5, 3, 8, 1, 4], [10, 8, 6, 7, 9.5, 9], [12, 5, 3, 8, 1, 4], [10, 8, 6, 7, 9.5, 9], [12, 5, 3, 8, 1, 4]
+    model = LinearRegression()
+    model.fit(x,y)
+    st.write("Write ur Info: ")
+    age = st.number_input("Age: ", min_value=5, max_value=100, value=25)
+    activity = st.slider("Activity period: (1 = low, 10 = much)", 1, 10, 5)
+    screen_time = st.number_input("Screen time: (1 = good, 10 = bad)", min_value = 0, max_value = 24, value=6)
+    if st.button("guess the day: "):
+        input_data = [[age, activity, screen_time]]
+        result = model.predict(input)[0]
+        st.success(f"You should sleep around {result: 1f}hours per night")
+        if result < 6.5:
+            st.warning("Maybe you should sleep more to gain energy")
+        elif result > 9:
+            st.info("Maybe u are now good")
+        else:
+            st.success("W sleep")
+with tab3:
+    st.header("hot infos from VnExpress")
+    feed = feedparser.parse("https://vnexpress.net/rss/tin-moi-nhat.rss")
+    for entry in feed.entries[:5]:
+        st.subheader(entry.title)
+        st.write(entry.published)
+        st.write(entry.link)
+with tab4:
+    st.header("💰 Cập nhật giá vàng từ Vietnamnet")
+
+    feed = feedparser.parse("https://vietnamnet.vn/rss/kinh-doanh.rss")
+    gold_news = [entry for entry in feed.entries if "vàng" in entry.title.lower() or "giá vàng" in entry.summary.lower()]
+
+    if gold_news:
+        for entry in gold_news[:5]:  # Hiện 5 bài gần nhất
+            st.subheader(entry.title)
+            st.write(entry.published)
+            st.write(entry.link)
+    else:
+        st.warning("Không tìm thấy bản tin giá vàng gần")
+
+with tab5:
+    st.header("check BMI")
+    weight = st.number_input("Write your weight: (kg)", min_value=10.0, max_value=200.0, value=60.0, step=0.1)
+    height = st.number_input("Write your height: (kg)", min_value=1.0, max_value=2.5, value=1.7, step=0.01)
+    
+    if st.button("BMI calculation"):
+        bmi = weight / (height ** 2)
+        st.success(f"Your BMI is: {bmi: .2f}")
+
+        if bmi < 18.5:
+            st.warning("You need wight donkey, eat more vro")
+        elif 18.5 <= bmi < 25:
+            st.info("You have normal weight, keep going")
+        elif 25 <= bmi < 30:
+            st.warning("You are a little slight off weight, try to eat less")
+        else:
+            st.error("You are fat, eat less bro")
+with tab6:
+    st.header("Amount of walking steps")
+    age2 = st.number_input("Write your age: ", min_value=0.0, max_value=130.0, value=18.0, step=1.0)
+    if st.button("Check walking steps"):
+        st.success(f"Your age: {int(age2)}")
+
+    if age2 < 18:
+        st.info("Bạn nên đi từ 12000 - 15000 bước mỗi ngày. ")
+    elif 18 <= age2 < 40:
+        st.info("Bạn nên đi từ 8000 bước đến 10000 bước mỗi ngày. ")
+    elif 40 <= age2 < 65:
+        st.warning("bạn nên đi từ 7000 bước đến 9000 bước mỗi ngày. ")
+    elif age2 >= 65:
+        st.warning("Bạn nên đi từ 6000 bước đến 8000 bước mỗi ngày")
+    else:
+        st.error("tuổi không hợp lệ ")
+with tab7:
+    st.header("Checking height")
+    age = st.number_input("Enter age: ", min_value = 0, max_value = 120, step=1)
+    height = st.number_input("Enter height: ", min_value=30.0, max_value = 250.0, step=0.1)
+    if st.button("check"):
+        if age < 5:
+            min_height, max_height = 90, 100
+        elif 5 <= age <= 7:
+            min_height, max_height = 110, 130
+        elif 8 <= age <= 10:
+            min_height, max_height = 130, 140
+        elif 11 <= age <= 13:
+            min_height, max_height = 140, 150
+        elif 14 <= age <= 16:
+            min_height, max_height = 150, 170
+        elif age > 16:
+            min_height, max_height = 160, 180
+        else:
+            st.warning("no standard height data vailable for this age. ")
+            st.stop()
+        if height < min_height:
+            st.error("Your height is below the standard")
+        elif height > max_height:
+            st.warning("Your height is above standard")
+        else:
+            st.success("Your height is within the standard range")
